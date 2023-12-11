@@ -1,5 +1,7 @@
 # Console-Finances
 
+<img src="Console-Finances.jpg" width="700px">
+
 ## Description
 
 In this project I was given a dataset composed of arrays which has two fields: Date and Profit/Losses. My task was to write JavaScript code that analyses the records to calculate:
@@ -10,7 +12,7 @@ In this project I was given a dataset composed of arrays which has two fields: D
 - Largest increase in Profits over any given month.
 - Largest decrease in Losses over any given month.
 
-_Find the link to the the deployed website [here]()_
+_Find the link to the the deployed website [here](https://prodigalprogrammer.github.io/Console-Finances/)_
 
 <p align="right">(<a href="#my-bootstrap-portfolio" >Back to top</a>)</p>
 
@@ -46,5 +48,6 @@ Monrone Stewart: [YouTube](https://www.youtube.com/@ProdigalP) - prodigalprogram
 - [GitHub Pages](https://pages.github.com/)
 - [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
 - [Google Fonts](https://fonts.google.com/)
+- [The Complete JavaScript Course 2024: From Zero to Expert!](https://www.udemy.com/course/the-complete-javascript-course/)
 
 <p align="right">(<a href="#my-bootstrap-portfolio" >Back to top</a>)</p>
