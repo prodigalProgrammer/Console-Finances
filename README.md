@@ -16,7 +16,14 @@ _Find the link to the the deployed website [here]()_
 
 ## Usage
 
-Scroll through the website to find out more information on Monrone Stewart, with projects that you can select and be taken to the relevant GitHub pages. The skills section give you an insight into what I have/ will learn throughout this bootcamp with links to relevant documentation. Lastly you can use the links in the contact section to be redirected to other pages concerning Monrone Stewart.
+The results are calculated and displayed in the Console as soon as the webpage is opened. None of the results are hardcoded and are displayed from variables. Some of the calculations vary in complexity, and there are many ways to get the same results but I used techniques I was familiar with like:
+
+- String Template Literals: `${ }`.
+- The For-Of Loop.
+- Both `Math.max()` and `Math.min()` methods.
+- The Spread Operator: `(...ArrayName)`.
+- Destructuring (`for (const [index-1, index-2] of Array)`).
+- The `reduce()` method.
 
 <p align="right">(<a href="#my-bootstrap-portfolio" >Back to top</a>)</p>
 

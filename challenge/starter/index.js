@@ -102,7 +102,7 @@ let PandLDates = [];
 // Empty array to contain all differences betwen the Profit/Loss dates.
 let PandLChanges = [];
 
-// forEach Loop where I destructure the 'finances' variable into two different arrays.
+// for-Of Loop where I destructure the 'finances' variable into two different arrays.
 for (const [dates, PandL] of finances) {
   // Adding each iteration of the Profit/Losses and totals them up into the 'totalPandL' variable.
   totalPAndL += PandL;
@@ -113,11 +113,11 @@ for (const [dates, PandL] of finances) {
   // Ends Loop
 }
 
-// Creating a for loop where the second index of the Profit/Loss array is taken away from the first index to find the difference in the two numbers. Note that in this case, the 'i' variable loops from 1 not 0.
+// Creating a for loop where the second index of the Profit/Loss array is taken away from the first index to find the difference in the two numbers. Note that in this case, the 'i' variable loops from 1 not 0 because the first difference in months should take place on the second month.
 for (let i = 1; i < PandLArray.length; ++i) {
+  // 'Pushing' all amounts into the 'PandLChanges' variable as each index is looped over.
   PandLChanges.push(PandLArray[i] - PandLArray[i - 1]);
-
-  // Using the same for loop to iterate over the
+  // Ends loop
 }
 
 const avgChange =
@@ -126,19 +126,38 @@ const avgChange =
     PandLChanges.reduce((acc, current) => acc + current) / PandLChanges.length
   ).toFixed(2);
 
-// Logging all results to the console by concatenating the variables with string statements to output the desired sentence.
+// Using the spread operator to make the 'PandLChanges' array an iterable list so I can return only the largest number (using the Math.max() method). This is then stored in a variable.
+const biggestProfit = Math.max(...PandLChanges);
+
+// Using the spread operator to make the 'PandLChanges' array an iterable list so I can return only the smallest number (using the Math.min() method). This is then stored in a variable.
+const biggestLoss = Math.min(...PandLChanges);
+
+// -------------------------------------------------------------------
+// CONSOLE LOGS
+// -------------------------------------------------------------------
+
+// '\n' added to create a backspace instead of two diffrent logs to the Console.
 console.log("Financial Analysis\n----------------");
 // 'totalMonths' variable displaying how many months are in the 'finances' variable.
 console.log(totalMonths);
 // Basic concatenation to combine a string with the 'totalPandL' variable.
 console.log("Total: $" + totalPAndL);
-// Using the temperal literal way to combine a string with the 'avgChange' variable.
+// Using the string template literal way to combine a string with the 'avgChange' variable.
 console.log(`Average Change: ${avgChange}`);
 
-console.log(Math.max(...PandLChanges));
-console.log(Math.min(...PandLChanges));
-console.log(PandLChanges);
-console.log(PandLDates);
+// Using the indexOf() method to return the position of the 'biggestProfit' number in the 'PandLChanges' array. I then use that same number to locate the relative position in the 'PandLDates' array (plus one additional index, because the 'PandLChanges' array start from the second month). Once the string is concatenated with the 'biggestProfit' variable, the sentence is complete.
+console.log(
+  `Greatest Increase in Profits/Losses: ${
+    PandLDates[PandLChanges.indexOf(biggestProfit) + 1]
+  } ($${biggestProfit})`
+);
+
+// Using the indexOf() method to return the position of the 'biggestLoss' number in the 'PandLChanges' array. I then use that same number to locate the relative position in the 'PandLDates' array (plus one additional index, because the 'PandLChanges' array start from the second month). Once the string is concatenated with the 'biggestLoss' variable, the sentence is complete.
+console.log(
+  `Greatest Decrease in Profits/Losses: ${
+    PandLDates[PandLChanges.indexOf(biggestLoss) + 1]
+  } ($${biggestLoss})`
+);
 
 // // Test version to calculate the changes between each Profit/Loss.
 // const testArr = [1000, -50, -900, -800];
@@ -146,9 +165,8 @@ console.log(PandLDates);
 // for (let i = 0; i < testArr.length; ++i) {
 //   testChange.push(testArr[i] - testArr[i - 1]);
 // }
-// console.log(testChange.shift());
 // console.log(testChange);
+// console.log(testChange.shift());
 
 // // Test version for the total of the changes.
 // console.log(testChange.reduce((acc, current) => acc + current));
-// console.log(testChange.reduce((acc, current) => Math.abs(acc + current)));
