@@ -87,26 +87,68 @@ var finances = [
   ["Feb-2017", 671099],
 ];
 
-var test = [1, 2, 3, 4];
-let totalTest = 0;
-for (let i = 0; i < test.length - 1; ++i) {
-  totalTest += Math.abs(test[i]) - Math.abs(test[i] + 1);
-}
-console.log(totalTest);
-
 // Variable containing amount of all arrays in the 'finances' variable.
 const totalMonths = "Total Months: " + finances.length;
 
-// Setting a variable to contain the total amount.
+// Setting a variable to contain the total amount of Profit/Losses.
 let totalPAndL = 0;
-let changes = 0;
-// forEach loop that destructures the finances arrays into two items: date & PAndL (Profits & Losses).
-for (const [date, PAndL] of finances) {
-  // My forEach Loop iterates through each Profit/Loss in every array and adds them to the 'totalPandL' variable.
-  totalPAndL += PAndL;
+
+// Empty array to contain all Profit/Loss numbers.
+let PandLArray = [];
+
+// Empty array to contain all Profit/Loss dates.
+let PandLDates = [];
+
+// Empty array to contain all differences betwen the Profit/Loss dates.
+let PandLChanges = [];
+
+// forEach Loop where I destructure the 'finances' variable into two different arrays.
+for (const [dates, PandL] of finances) {
+  // Adding each iteration of the Profit/Losses and totals them up into the 'totalPandL' variable.
+  totalPAndL += PandL;
+  // Creating an array made up of just the Profit/Loss numbers.
+  PandLArray.push(PandL);
+  // Creating an array made up of just the Profit/Loss dates.
+  PandLDates.push(dates);
   // Ends Loop
 }
-console.log(changes);
+
+// Creating a for loop where the second index of the Profit/Loss array is taken away from the first index to find the difference in the two numbers. Note that in this case, the 'i' variable loops from 1 not 0.
+for (let i = 1; i < PandLArray.length; ++i) {
+  PandLChanges.push(PandLArray[i] - PandLArray[i - 1]);
+
+  // Using the same for loop to iterate over the
+}
+
+const avgChange =
+  // Using the reduce() method to total all the differences between the months, then dividing by the total amount of months where a change has occured (85) to find the average amount. The 'toFixed()' method ensures that the decimal integer given is rounded to within two decimal points.
+  (
+    PandLChanges.reduce((acc, current) => acc + current) / PandLChanges.length
+  ).toFixed(2);
+
+// Logging all results to the console by concatenating the variables with string statements to output the desired sentence.
 console.log("Financial Analysis\n----------------");
+// 'totalMonths' variable displaying how many months are in the 'finances' variable.
 console.log(totalMonths);
-console.log(totalPAndL);
+// Basic concatenation to combine a string with the 'totalPandL' variable.
+console.log("Total: $" + totalPAndL);
+// Using the temperal literal way to combine a string with the 'avgChange' variable.
+console.log(`Average Change: ${avgChange}`);
+
+console.log(Math.max(...PandLChanges));
+console.log(Math.min(...PandLChanges));
+console.log(PandLChanges);
+console.log(PandLDates);
+
+// // Test version to calculate the changes between each Profit/Loss.
+// const testArr = [1000, -50, -900, -800];
+// const testChange = [];
+// for (let i = 0; i < testArr.length; ++i) {
+//   testChange.push(testArr[i] - testArr[i - 1]);
+// }
+// console.log(testChange.shift());
+// console.log(testChange);
+
+// // Test version for the total of the changes.
+// console.log(testChange.reduce((acc, current) => acc + current));
+// console.log(testChange.reduce((acc, current) => Math.abs(acc + current)));
